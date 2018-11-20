@@ -7,7 +7,7 @@ class MegaGreeter
   end
 
   # Say hi to everybody
-  def seay_hi
+  def say_hi
     if @names.nil?
       puts "..."
     elsif @names.respond_to?("each")
@@ -31,4 +31,23 @@ class MegaGreeter
       puts "Goodbye #{@names}. Come back soon!"
     end
   end
+end
+
+
+if __FILE__ == $0
+  mg = MegaGreeter.new
+  mg.say_hi
+  mg.say_bye
+
+  mg.names = "Zeke"
+  mg.say_hi
+  mg.say_bye
+
+  mg.names = ["Albert", "Brenda", "Charlse"]
+  mg.say_hi
+  mg.say_bye
+
+  mg.names = nil
+  mg.say_hi
+  mg.say_bye
 end
