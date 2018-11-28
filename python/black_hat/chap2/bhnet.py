@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import sys
@@ -85,8 +86,6 @@ def main():
     if listen:
         server_loop()
 
-main()
-
 def client_sender(buffer):
 
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -95,14 +94,14 @@ def client_sender(buffer):
         client.connect((target, port))
 
         if len(buffer):
-            client.send(buffer)
+            client.send(buffer.encode())
 
         while True:
             recv_len = 1
             response = ""
 
             while recv_len:
-                data      = client.recv(4096)
+                data      = client.recv(4096).decode()
                 recv_len  = len(data)
                 response += data
 
@@ -114,7 +113,7 @@ def client_sender(buffer):
             buffer = input("")
             buffer += "\n"
 
-            client.send(buffer)
+            client.send(buffer.encode())
     except:
         print("[*] Exception! Exiting.")
 
@@ -143,7 +142,7 @@ def server_loop():
 
 def run_command(command):
 
-    command = command.tstrip()
+    command = command.rstrip()
 
     try:
         output = subprocess.check_output(
@@ -163,7 +162,7 @@ def client_handler(client_socket):
         file_buffer = ""
 
         while True:
-            data = client_socket.recv(1024)
+            data = client_socket.recv(1024).decode()
 
             if len(data) == 0:
                 break
@@ -176,31 +175,34 @@ def client_handler(client_socket):
             file_descriptor.close()
 
             client_socket.send(
-                "Successfully saved file to %s\r\n" % upload_destination)
+                b"Successfully saved file to %s\r\n" % upload_destination)
         except:
             client_socket.send(
-                "Failed to save file to %s\r\n" % upload_destination)
+                b"Failed to save file to %s\r\n" % upload_destination)
 
     if len(execute):
 
         output = run_command(execute)
 
-        client_socket.send(output)
+        client_socket.send(output.encode())
 
     if command:
 
         prompt = "<BHP:#> "
-        client_socket.send(prompt)
+        client_socket.send(prompt.encode())
 
         while True:
 
             cmd_buffer = ""
             while "\n" not in cmd_buffer:
-                cmd_buffer += client_socket.recv(1024)
+                cmd_buffer += client_socket.recv(1024).decode()
 
             response = run_command(cmd_buffer)
 
         response = run_command(cmd_buffer)
         response += prompt
 
-        client_socket.send(response)
+        client_socket.send(response.encode())
+
+
+main()
