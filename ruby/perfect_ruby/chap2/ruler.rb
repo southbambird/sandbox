@@ -43,3 +43,15 @@ end
 
 ruler = Ruler.new(30)
 puts ruler.length
+
+
+class Ruler
+  attr_accessor :length
+
+  def self.pair
+    [Ruler.new(30), Ruler.new(30)]
+  end
+end
+
+
+puts Ruler.pair
