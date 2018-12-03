@@ -36,3 +36,9 @@ end
 block_sample do
   puts 'walk'
 end
+
+
+people = %w(Alice Bob Charlie)
+block = Proc.new do |name| puts name end
+people.each &block
+                 
