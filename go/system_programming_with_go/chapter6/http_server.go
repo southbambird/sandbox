@@ -8,6 +8,8 @@ import (
     "net/http"
     "net/http/httputil"
     "strings"
+    "io"
+    "time"
 )
 
 func main() {
