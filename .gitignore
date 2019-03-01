@@ -3,3 +3,5 @@ go/system_programming_with_go/chapter2/multiwriter.txt
 *.txt
 *.gz
 go/system_programming_with_go/chapter3/file.go
+.local/
+.cache/
