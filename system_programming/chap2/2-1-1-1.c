@@ -1,9 +1,10 @@
-#include <stdio.h>
+p#include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <errno.h>
 
 
 int main(void)
@@ -18,6 +19,7 @@ int main(void)
   }
   
   printf("open done\n");
+  printf("%d\n",errno);
 
   int fd2;
 
@@ -28,6 +30,6 @@ int main(void)
   }
   printf("open done 2\n");
 
-  sleep(15);
+  //sleep(15);
 
 }
