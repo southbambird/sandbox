@@ -5,14 +5,17 @@ def swap(a, j)
 end
 
 def bubble_sort(a, n)
+  swap_count = 0
   (0..n).each do |i|
     (n-1).step(i+1, -1) do |j|
       if a[j] < a[j-1]
         swap(a, j)
+        swap_count += 1
       end
     end
-    p a
   end
+  puts a.join(' ')
+  puts swap_count
 end
 
 N = gets.to_i
