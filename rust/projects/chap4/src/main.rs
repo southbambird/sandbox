@@ -1,6 +1,11 @@
 fn main() {
-    let s1 = String::from("Hello, ");
-    let s2 = s1.clone();
+    let s1 = String::from("hello");
 
-    println!("s1 is {}, s2 is {}", s1, s2);
+    let len = calculate_length(&s1);
+
+    println!("The length of {} is {}", s1, len);
+}
+
+fn calculate_length(s: &String) -> usize {
+    s.len()
 }
