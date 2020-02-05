@@ -1,15 +1,13 @@
-struct User {
-    username: &str,
-    email: &str,
-    sign_in_count: u64,
-    active: bool,
+fn main() {
+    let width = 30;
+    let height = 50;
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        area(width, height)
+    );
 }
 
-fn main() {
-    let user1 = User {
-        email: "someone@gmail.com",
-        username: "someone",
-        active: true,
-        sign_in_count: 1,
-    };
+fn area(width: u32, height: u32) -> u32 {
+    width * height
 }
