@@ -1,3 +1,4 @@
+#[derive(Debug)]
 struct Rectangle {
     width: u32,
     height: u32,
@@ -17,9 +18,11 @@ fn main() {
         area(&rectangle)
     );
 
+    println!("rect is {:?}", rectangle);
+
     let black = Color(0, 0, 0);
     let mut origin = Point(0, 0, 0);
-    origin = black;
+    // origin = black;
 }
 
 fn area(rectangle: &Rectangle) -> u32 {
