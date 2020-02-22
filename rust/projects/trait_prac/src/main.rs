@@ -17,7 +17,7 @@ fn main() {
         retweet: false,
     };
 
-    println!("1 new tweet: {}", tweet.summarize());
+    //println!("1 new tweet: {}", tweet.summarize());
 
     notify(tweet);
 }
@@ -46,11 +46,11 @@ pub struct Tweet {
     pub retweet: bool,
 }
 
-impl Summary for Tweet {
-    fn summarize(&self) -> String {
-        format!("{}: {}", self.username, self.content)
-    }
-}
+//impl Summary for Tweet {
+//    fn summarize(&self) -> String {
+//        format!("{}: {}", self.username, self.content)
+//    }
+//}
 
 pub fn notify<T: Summary>(item: T) {
     println!("Breaking new!! {}", item.summarize());
