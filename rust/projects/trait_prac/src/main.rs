@@ -8,6 +8,8 @@ fn main() {
 
     println!("news desu! -> {}", news.summarize());
 
+    notify(news);
+
     let tweet = Tweet {
         username: String::from("horse_ebooks"),
         content: String::from("of course, as you probably already know, people"),
@@ -16,6 +18,8 @@ fn main() {
     };
 
     println!("1 new tweet: {}", tweet.summarize());
+
+    notify(tweet);
 }
 
 pub trait Summary {
@@ -46,4 +50,8 @@ impl Summary for Tweet {
     fn summarize(&self) -> String {
         format!("{}: {}", self.username, self.content)
     }
+}
+
+pub fn notify<T: Summary>(item: T) {
+    println!("Breaking new!! {}", item.summarize());
 }
