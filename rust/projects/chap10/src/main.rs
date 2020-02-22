@@ -1,14 +1,19 @@
 fn main() {
     let number_list = vec![10, 20, 30, 40, 50];
 
-    let mut largest = number_list[0];
+    let result = largest(&number_list);
+    println!("The largest number is {}", result);
+    assert_eq!(result, 50);
+}
 
-    for number in number_list {
-        if number > largest {
-            largest = number;
+fn largest(list: &[i32]) -> i32 {
+    let mut largest = list[0];
+
+    for &item in list {
+        if item > largest {
+            largest = item;
         }
     }
 
-    println!("The largest number is {}", largest);
-    assert_eq!(largest, 50);
+    largest
 }
