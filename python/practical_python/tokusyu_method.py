@@ -17,3 +17,18 @@ class Point:
 p = Point(1, 2)
 print(p.__repr__())
 print(p)
+
+
+class QueryParams:
+    def __init__(self, params):
+        self.params = params
+    def __bool__(self):
+        return bool(self.params)
+    def __len__(self):
+        return len(self.params)
+
+query = QueryParams({})
+print(bool(query))
+
+query = QueryParams({'key': 'value'})
+print(bool(query))
