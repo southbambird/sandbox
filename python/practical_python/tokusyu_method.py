@@ -14,9 +14,22 @@ class Point:
         return f'Point({self.x}, {self.y})'
     def __str__(self):
         return f'({self.x}, {self.y})'
+    def __setattr__(self, name, value):
+        if name not in ('x', 'y'):
+            raise AttributeError('Not allowed')
+        super().__setattr__(name, value)
+    def __delattr__(self, name):
+        if name in ('x', 'y'):
+            raise AttributeError('Not allowed')
+        super().__delattr__(name)
+
 p = Point(1, 2)
 print(p.__repr__())
 print(p)
+
+# p.z = 3
+p.x = 3
+print(p.x)
 
 
 class QueryParams:
@@ -49,3 +62,7 @@ adder.add(3)
 print(adder())
 adder.add(5)
 print(adder())
+
+
+
+
