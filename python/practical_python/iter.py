@@ -30,3 +30,13 @@ print(sorted(y, reverse=True))
 
 x = ['1','4', 3, 1, '1']
 sorted(x, key=lambda v: int(v))
+
+
+
+
+x = (1, 4, 3, 5, 2)
+print(list(filter(lambda i: i > 3, x)))
+
+
+
+
