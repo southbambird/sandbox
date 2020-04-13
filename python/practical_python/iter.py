@@ -15,3 +15,18 @@ print(list(zip(x, y ,z)))
 from itertools import zip_longest
 print(list(zip_longest(x, y, z, fillvalue=0)))
 
+
+
+x = [1, 4, 3, 5, 2]
+y = [1, 4, 3, 5, 2]
+
+x.sort()
+print(x)
+
+print(sorted(y))
+print(y)
+
+print(sorted(y, reverse=True))
+
+x = ['1','4', 3, 1, '1']
+sorted(x, key=lambda v: int(v))
