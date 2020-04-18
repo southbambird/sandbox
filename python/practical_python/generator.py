@@ -42,3 +42,19 @@ def chain2(iterables):
         yield from (v for v in iterable)
 
 print(list(chain2(iterables)))
+
+
+def reader(src):
+    with open(src) as f:
+        for line in f:
+            yield line
+
+def convert(line):
+    return line.upper()
+
+def writer(dest, reader):
+    with open(dest, 'w') as f:
+        for line in reader:
+            f.write(convert(line))
+
+writer('dest.txt', reader('src.txt'))
