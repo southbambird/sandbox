@@ -107,3 +107,10 @@ class CountDict:
             'set': list(self._set_count.items()),
             'get': list(self._get_count.items()),
         }
+
+class OddNumbers:
+    def __contains__(self, item):
+        try:
+            return item % 2 == 1
+        except:
+            return False
