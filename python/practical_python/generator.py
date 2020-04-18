@@ -27,3 +27,18 @@ print(max(gen_function(5)))
 x = [1, 2, 3, 4, 5]
 gen = (i**2 for i in x)
 print(list(gen))
+
+
+def chain(iterables):
+    for iterable in iterables:
+        for v in iterable:
+            yield v
+
+iterables = ('python', 'book')
+print(list(chain(iterables)))
+
+def chain2(iterables):
+    for iterable in iterables:
+        yield from (v for v in iterable)
+
+print(list(chain2(iterables)))
