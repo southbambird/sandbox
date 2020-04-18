@@ -73,3 +73,16 @@ class Iterable:
         return iter(range(self.num))
 
 print([val for val in Iterable(3)])
+
+
+
+class Reverser:
+    def __init__(self, x):
+        self.x = x
+    def __iter__(self):
+        return self
+    def __next__(self):
+        try:
+            return self.x.pop()
+        except IndexError:
+            raise StopIteration()
