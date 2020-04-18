@@ -23,3 +23,7 @@ for i in gen_function(2):
 
 print([i for i in gen_function(5)])
 print(max(gen_function(5)))
+
+x = [1, 2, 3, 4, 5]
+gen = (i**2 for i in x)
+print(list(gen))
