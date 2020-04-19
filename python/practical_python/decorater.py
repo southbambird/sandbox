@@ -55,3 +55,19 @@ def func2(x, y):
 
 print(func2(1, 2))
 
+def deco3(z):
+    def _deco3(f):
+        def wrapper(*args, **kwargs):
+            print('before exec3', z)
+            v = f(*args, **kwargs)
+            print('after exec3', z)
+            return v
+        return wrapper
+    return _deco3
+
+@deco3(z=3)
+def func3(x, y):
+    print('exec3')
+    return x,y
+
+print(func3(1, 2))
