@@ -39,3 +39,19 @@ def func():
 print(func.__name__)
 
 print(func())
+
+def deco2(f):
+    def wrapper(*args, **kwargs):
+        print('before exec')
+        v = f(*args, **kwargs)
+        print('after exec')
+        return v
+    return wrapper
+
+@deco2
+def func2(x, y):
+    print('exec')
+    return x, y
+
+print(func2(1, 2))
+
