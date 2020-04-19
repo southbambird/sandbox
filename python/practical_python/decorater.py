@@ -19,4 +19,23 @@ class Fruit:
 apple = Fruit(name='apple', price=128)
 print(apple)
 
-apple.price = 256
+#apple.price = 256
+
+
+def deco1(f):
+    print('deco1 called')
+    def wrapper():
+        print('before exec')
+        v = f()
+        print('after exec')
+        return v
+    return wrapper
+
+@deco1
+def func():
+    print('exec')
+    return 1
+
+print(func.__name__)
+
+print(func())
