@@ -90,3 +90,21 @@ def func4():
 
 print(func4.__name__)
 print(func4.__doc__)
+
+
+import time
+def elapsed_time(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        v = f(*args, *kwargs)
+        print(f"{f.__name__}: {time.time() - start}")
+        return v
+    return wrapper
+
+@elapsed_time
+def func5(n):
+    return sum(i for i in range(n))
+
+print(f'{func5(100000)}')
+
