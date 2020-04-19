@@ -71,3 +71,22 @@ def func3(x, y):
     return x,y
 
 print(func3(1, 2))
+
+
+from functools import wraps
+def deco4(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        print('before exec')
+        v = f(*args, **kwargs)
+        print('after exec')
+        return v
+    return wrapper
+
+@deco4
+def func4():
+    '''func4です'''
+    print('exec')
+
+print(func4.__name__)
+print(func4.__doc__)
