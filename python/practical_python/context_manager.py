@@ -14,3 +14,6 @@ class ContextManager:
 
 with ContextManager():
     print('inside the block')
+
+with ContextManager():
+    1 / 0
