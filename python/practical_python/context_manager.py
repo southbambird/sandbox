@@ -15,5 +15,28 @@ class ContextManager:
 with ContextManager():
     print('inside the block')
 
-with ContextManager():
-    1 / 0
+#with ContextManager():
+#    1 / 0
+
+class ContextManager2:
+    def __enter__(self):
+        return 1
+    def __exit__(self, exc_type, exc_value, traceback):
+        pass
+
+with ContextManager2() as f:
+    print(f)
+
+class Point:
+    def __init__(self, **kwargs):
+        self.value = kwargs
+    def __enter__(self):
+        print('__enter__ was called')
+        return self.value
+    def __exit__(self, exc_type, exc_value, traceback):
+        print('__exit__ was called')
+        print(self.value)
+
+with Point(x=1, y=2) as p:
+    print(p)
+    p['z'] = 3
