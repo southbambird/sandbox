@@ -3,6 +3,7 @@ import os
 import time
 from concurrent.futures import (
     ProcessPoolExecutor,
+    ThreadPoolExecutor,
     as_completed
 )
 
@@ -34,11 +35,20 @@ def get_multi_process(nums):
         for future in as_completed(futures):
             print(future.result())
 
+@elapsed_time
+def get_multi_thread(nums):
+    with ThreadPoolExecutor() as e:
+        futures = [e.submit(fibonacci, num)
+                    for num in nums]
+        for future in as_completed(futures):
+            print(future.result())
+
 def main():
     n = int(sys.argv[1])
     nums = [n] * os.cpu_count()
     #get_sequential(nums)
-    get_multi_process(nums)
+    #get_multi_process(nums)
+    get_multi_thread(nums)
 
 if __name__ == "__main__":
     main()
