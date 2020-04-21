@@ -28,4 +28,19 @@ def get_sequential():
     for url in urls:
         print(download(url))
 
-print(get_sequential())
+#print(get_sequential())
+
+from concurrent.futures import (
+    ThreadPoolExecutor,
+    as_completed
+)
+
+@elapsed_time
+def get_multi_thread():
+    with ThreadPoolExecutor(max_workers=3) as executor:
+        futures = [executor.submit(download, url)
+                    for url in urls]
+        for future in as_completed(futures):
+            print(future.result())
+
+print(get_multi_thread())
