@@ -9,3 +9,6 @@ python/python_security_programming/.python_history
 python/python_security_programming/.bash_history
 python/python_security_programming/.sudo_as_admin_successful
 *.json
+rust/otamesi/fizzbuzz
+rust/otamesi/hello
+rust/otamesi/square_sum
